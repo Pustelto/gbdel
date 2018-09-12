@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const inquirer = require('inquirer');
+const chalk = require('chalk');
 const exec = require('child-process-promise').exec;
 
 function ignoreBranches(branchList) {
@@ -20,7 +21,7 @@ Promise.all([localBranches, mergedBranches])
 
     const mergedArray = merged.split('\n')
 
-    return Promise.resolve(branches.split('\n').filter(Boolean).map(b => ({value: b, name: `${b} ${mergedArray.includes(b) ? '<MERGED>' : ''}`})))
+    return Promise.resolve(branches.split('\n').filter(Boolean).map(b => ({value: b, name: `${b} ${mergedArray.includes(b) ? chalk.blue('<MERGED>') : ''}`})))
   })
   .then(choices =>
     inquirer
@@ -35,7 +36,7 @@ Promise.all([localBranches, mergedBranches])
       ])
   )
   .then(answers => {
-    console.log('Deleting selected branches... \n');
+    console.log('Deleting selected branches...\n');
     const deletes = answers.branches.map(branch => {
 
       return exec(`git branch -D ${branch}`)
@@ -45,13 +46,13 @@ Promise.all([localBranches, mergedBranches])
   })
   .then((res) => {
     res.forEach(result => {
-      console.log(result.stdout);
+      console.log(result.stdout.trim());
     })
 
-    console.log('Branches deleted successfully')
+    console.log(chalk.green('Branches deleted successfully'))
     process.exit(0);
   })
   .catch(error => {
-    console.error(error)
+    console.error(chalk.red('There has been error: ', error))
     process.exit(1);
   })

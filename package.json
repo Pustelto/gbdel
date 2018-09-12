@@ -8,6 +8,7 @@
   "bin": {
     "gbdel": "index.js"
   },
+  "repository": "https://github.com/Pustelto/gbdel",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

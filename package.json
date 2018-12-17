@@ -8,7 +8,14 @@
   "bin": {
     "gbdel": "index.js"
   },
-  "repository": "https://github.com/Pustelto/gbdel",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/Pustelto/gbdel.git"
+  },
+  "homepage": "https://github.com/Pustelto/gbdel",
+  "bugs": {
+      "url": "https://github.com/Pustelto/gbdel/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

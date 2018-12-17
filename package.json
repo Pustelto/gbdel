@@ -1,6 +1,6 @@
 {
   "name": "gbdel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tiny node.js shell script for interactive deletion of local git branches with ease",
   "engines": {
     "node": ">=8.11.0"
